@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+
+    <!-- Se assegura de que tudo tome as devidas proporções em um dispositivos movel -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- Let's borrow a cool looking Font from Google -->
+    <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+    
+      
+
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="gameArea">
+        <!-- Aqui é onde o modelo definido abaixo será utilizado -->
+    </div>
+
+    <!-- Tela principal que aparece quando a pagina é carregada pela primeira vez -->
+    <script id="intro-screen-template" type="text/template">
+
+        <div class="titleWrapper">
+
+            <div class="title">
+                ANAGRAMRUN
+            </div>
+
+            <div class="buttons">
+
+                <button id="btnCreateGame" class="btn left">CREATE</button>
+                <button id="btnJoinGame" class="btn right">JOIN</button>
+                <div style="clear:both"></div>
+            </div>
+
+        </div>
+
+    </script>
+
+    <!-- Essa tela aparece quando um usuario clica em "CREATE" na tela principal -->
+    <script id="create-game-template" type="text/template">
+        <div class="createGameWrapper">
+
+            <div class="info">Open this site on your mobile device:</div>
+            <div id="gameURL" class="infoBig">Error!</div>
+
+            <div class="info">Then click <strong>JOIN</strong> and <br/> enter the following Game ID:</div>
+            <div id="spanNewGameCode" class="gameId">Error!</div>
+
+            <div id="playersWaiting"></div>
+        </div>
+    </script>
+
+    <!--  Essa tela aparece quando um usuario clica em "JOIN" na tela principal -->
+    <script id="join-game-template" type="text/template">
+        <div class="joinGameWrapper">
+            <div class="info">
+                <label for="inputPlayerName">Your Name:</label>
+                <input id="inputPlayerName" type="text" />
+            </div>
+
+            <div class="info">
+                <label for="inputGameId">Game ID:</label>
+                <input id="inputGameId" type="text"/>
+            </div>
+
+            <div class="info buttons">
+                <button id="btnStart" class="btn">Start</button>
+                <div id="playerWaitingMessage"></div>
+            </div>
+        </div>
+    </script>
+
+    <!-- Esta é a tela de 'Host'. Ela apresenta as palavra para cada jogador combinar -->
+    <script id="host-game-template" type="text/template">
+        <div id="wordArea">
+            <div id="hostWord">5</div>
+        </div>
+        <div id="playerScores">
+            <div id="player1Score" class="playerScore">
+                <span class="score">0</span><span class="playerName">Player 1</span>
+            </div>
+            <div id="player2Score" class="playerScore">
+                <span class="playerName">Player 2</span><span class="score">0</span>
+            </div>
+        </div>
+    </script>
+
+    <!-- Bibliotecas JavaScript -->
+
+    <!-- jQuery! -->
+    <script src="libs/jquery-2.0.2.min.js"></script>
+
+    <!-- TextFit redimensiona um texto para ocupar um container.
+        É utlilizado para que o titulo e palavras do jogo se ajuste adequadamente em qualquer tamanhop de tela.
+        https://github.com/STRML/textFit   -->
+        <script src="libs/textFit.min.js"></script>
+
+    <!-- FastClick é utilizado para eliminar o atrso de 300ms quando um item é clicado em um dispositivo mobile.
+        https://github.com/ftlabs/fastclick -->
+    <script src="libs/fastclick.js"></script>
+
+    <!-- Se Socket.IO é usado com Express, então o enderesso /socket.io/ vai distribuir 
+    os arquivos javascript Socket.IO utilisados pelo navegador -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- app.js é aonde está toda a lógica do client-side do jogo -->
+    <script src="app.js"></script>
+
+</body>
+</html>
